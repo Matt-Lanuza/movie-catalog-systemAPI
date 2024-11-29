@@ -65,3 +65,24 @@ module.exports.loginUser = async (req, res) => {
         res.status(500).send({ message: 'Server error' });
 	}
 }
+
+// Get User's details
+module.exports.getUserDetails = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id, { password: 0 });
+
+        if (user) {
+            return res.status(200).send({
+                user: {
+                    id: user._id,
+                    email: user.email,
+                    __v: user.__v
+                }
+            });
+        } else {
+            return res.status(404).send({ error: 'User not found' });
+        }
+    } catch (error) {
+        return res.status(500).send({details: error});
+    }
+};
