@@ -76,6 +76,7 @@ module.exports.getUserDetails = async (req, res) => {
                 user: {
                     id: user._id,
                     email: user.email,
+                    isAdmin: user.isAdmin,
                     __v: user.__v
                 }
             });
