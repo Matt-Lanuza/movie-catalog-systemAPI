@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
 const corsOptions = {
-    origin: [`http://localhost:3000`, `https://movie-catalog-systemapi-lanuza.onrender.com`, `movie-app-client-delta.vercel.app
+    origin: [`http://localhost:3000`, `https://movie-catalog-systemapi-lanuza.onrender.com`, `https://movie-app-client-delta.vercel.app
 `],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
