@@ -11,6 +11,10 @@ module.exports.addMovie = async (req, res) => {
             return res.status(400).send({ error: 'All fields are required' });
         }
 
+        if (isNaN(year)) {
+          return res.status(400).send({ error: 'Year must be a number' });
+        }
+
         const newMovie = new Movie({
             title,
             director,
