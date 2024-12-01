@@ -84,10 +84,10 @@ module.exports.updateMovie = async (req, res) => {
 		const movieId = req.params.id;
 		const { title, director, year, description, genre } = req.body;
 
-		if (typeof year !== 'number') {
-		    return res.status(400).send({ error: 'Invalid year' });
+		const parsedYear = Number(year);
+		if (isNaN(parsedYear) || parsedYear < 1900 || parsedYear > new Date().getFullYear()) {
+		  return res.status(400).send({ error: 'Invalid year. It must be a number between 1900 and the current year.' });
 		}
-
 		let newUpdatedMovie = {
 			title,
 			director,
