@@ -11,10 +11,6 @@ module.exports.addMovie = async (req, res) => {
             return res.status(400).send({ error: 'All fields are required' });
         }
 
-        if (typeof year !== 'number') {
-            return res.status(400).send({ error: 'Invalid year' });
-        }
-
         const newMovie = new Movie({
             title,
             director,
