@@ -27,7 +27,8 @@ app.use(cors(corsOptions));
 
 
 //[Database Connection]
-mongoose.connect(process.env.MONGODB_STRING);
+const MONGODB_STRING = "mongodb+srv://admin:admin123@wdc028-b461.qepkz.mongodb.net/Movie-Catalog-System-API?retryWrites=true&w=majority&appName=WDC028-B461";
+mongoose.connect(MONGODB_STRING, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.once('open',()=>console.log("Now connected to MongoDB Atlas"));
 
 //[Backend Routes]
@@ -35,10 +36,10 @@ app.use("/users", userRoutes);
 app.use("/movies", movieRoutes);
 
 
-
+const PORT = 4000;
 if(require.main === module){
-	app.listen(process.env.PORT || 4000, () => {
-	    console.log(`API is now online on port ${ process.env.PORT || 4000 }`)
+	app.listen(PORT, () => {
+	    console.log(`API is now online on port ${PORT}`)
 	});
 }
 
